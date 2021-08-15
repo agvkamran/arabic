@@ -1,0 +1,368 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+button {
+    cursor: pointer;
+}
+
+header {
+    background-color: #0e1b36;
+}
+
+ul li {
+    list-style-type: none;
+    cursor: pointer;
+}
+
+@mixin dflex ($fdirection: row, $fcontent: center, $fwrap: nowrap){
+    display: flex;
+    align-items: center;
+    flex-direction: $fdirection;
+    justify-content: $fcontent;
+    flex-wrap: $fwrap;
+}
+
+nav {
+    @include dflex(row,space-between, nowrap);
+    justify-content: space-between;
+    padding: 20px 100px;
+}
+
+.nav_list {
+    @include dflex(row, space-between, nowrap);
+    & li { 
+        color: #fff;
+    }
+    & li:not(:first-child){
+        margin-left: 40px;
+    }
+    & li:first-child {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border: 1px solid #fff;
+        padding: 10px;
+        border-radius: 5px;
+    }
+    & li:first-child span {
+        margin-left: 130px;
+    }
+}
+
+.logo{
+    cursor: pointer;
+}
+
+.bg_image {
+    background: url(./images/main_header_arabic.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+    padding: 100px;
+}
+
+.svg_images {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    justify-content: space-between;
+}
+
+.img_relative {
+    // margin-left: 130px;
+    // margin-top: 90px;
+}
+
+
+.img_rectangle {
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 30px;
+    width: 23%;
+    & p:first-child {
+        font-size: 70px;
+        color: #e88b0c;
+    }
+    & p:last-child {
+        font-size: 60px;
+        color: #5da9dd;
+    }
+}
+
+
+.options {
+    @include dflex(row, flex-end, nowrap);
+    & .options_menu {
+        @include dflex(row, flex-end, nowrap);
+        & li {
+            padding: 30px 15px;
+            font-size: 22px;
+        }
+        & li:hover {
+            background-color: #39f;
+        }
+    }
+}
+
+.trades {
+    background: url(./images/bonus_background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    @include dflex(column, flex-end, nowrap);
+    & .trades_images {
+        @include dflex(row, flex-end, nowrap);
+        padding: 50px 0;
+    }
+
+    .trades_images_wrapper:first-child {
+        background: url(./images/bonus_image_left.png);
+        background-repeat: no-repeat;
+        padding: 120px 0;
+        @include dflex(column);
+        height: 100%;
+        
+        
+    & p:first-child {
+        font-size: 38px;
+        transform: skewY(-6deg) scaleX(.9);
+        text-align: center;
+        color: #fff;
+        margin: 0 20px;
+    }
+    & p:nth-child(2){
+        margin-top: 20px;
+        font-size: 30px;
+        border: 1px solid #000;
+        padding: 10px 20px;
+        transform: skewY(-6deg) scaleX(.9);
+    }
+}
+    .trades_images_wrapper:not(:first-child){
+        margin-left: 70px;
+    }
+}
+
+.trades_images_wrapper:nth-child(2){
+    background: url(./images/bonus_image_center.png);
+    background-repeat: no-repeat;
+    @include dflex(column);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 70px 100px;
+    & p:first-child {
+        font-size: 44px;
+    }
+    & p:nth-child(2){
+        font-size: 100px;
+        color: #fff;
+    }
+    & p:nth-child(3){
+        font-size: 44px;
+        color: #fff;
+    }
+    & p:nth-child(4){
+        cursor: pointer;
+        font-size: 30px;
+        color: #000;
+        border: 1px solid #000;
+        padding: 10px 20px;
+        margin-top: 20px;
+    }
+}
+
+.trades_images_wrapper:nth-child(3){
+    background: url(./images/bonus_image_right.png);
+    background-repeat: no-repeat;
+    padding: 120px 0;
+    @include dflex(column);
+    & p:first-child {
+        font-size: 38px;
+        transform: skewY(6deg) scaleX(.9);
+        text-align: center;
+        color: #fff;
+        margin: 0 20px;
+    }
+    & p:nth-child(2){
+        margin-top: 20px;
+        font-size: 30px;
+        border: 1px solid #000;
+        padding: 10px 20px;
+        transform: skewY(6deg) scaleX(.9);
+}
+}
+
+.bullet {
+    background: url(./images/bullet_background.jpg);
+    @include dflex();
+    padding: 10px;
+    & div:not(:first-child) {
+        margin-left: 75px;
+    }
+    & div > p:first-child {
+        color: #fff;
+        font-size: 44px;
+    }
+    & div > p:last-child {
+        color: #fff;
+        font-size: 24px;
+    }
+    & div:first-child p {
+        color: #720ce8;
+        text-align: center;
+        font-size: 30px;
+    }
+    &__btn {
+        position: relative;
+        @include dflex(column);
+        & .bullet_text {
+            position: absolute;
+        }
+    }
+    
+}
+
+.august {
+    background: url(https://ar.maximarkets.org/wp-content/themes/maximarkets/assets/images/time_background.jpg);
+    @include dflex(column);
+    text-align: center;
+   &__first_side > p:first-child{
+    margin-top: 40px;
+    font-size: 70px;
+    color: #167bc0;
+    margin-bottom: 40px;
+    }
+    &__first_side > p:nth-child(2){
+        color: #253f76;
+        font-size: 50px;
+   } 
+   &__first_side > p:nth-child(3){
+       color: #253f76;
+       font-size: 50px;
+   }
+}
+
+.august__second_side {
+    position: relative;
+    margin-top: 150px;
+    @include dflex();
+    & .circle_one, .circle_two {
+        @include dflex(column);
+        border-radius: 50%;
+        background-color: transparent;
+        border: 1px solid #720ce8;
+        padding: 40px 20px;
+    }
+    .circle_one {
+        border: 1px solid #167bc0;
+    }
+    .circle_abs {
+        position: absolute;
+        top: -80%;
+        left: 50%;
+        border-radius: 50%;
+        background-color: transparent;
+        border: 1px solid #720ce8;
+        padding: 40px 20px;
+    }
+}
+
+.august__bottom_side {
+    @include dflex();
+    margin-bottom: 40px;
+    & > p:first-child, p:nth-child(3){
+        color: #167bc0;
+        font-size: 60px;
+    }
+    & > div > img {
+        margin: 0 40px;
+    }
+    & > div {
+        position: relative;
+        @include dflex();
+    }
+    & > div > p {
+        position: absolute;
+        color: #fff;
+        font-size: 40px;
+    }
+}
+
+.hexagon_page {
+    padding: 50px;
+    background: url(./images/unique_background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+    @include dflex(column);
+    &__hexagon_texts {
+        margin-top: 50px;
+        @include dflex(column);
+    }
+
+    &__hexagon_texts > p:first-child{
+        font-size: 50px;
+        color: #e88b0c;
+    }
+    &__hexagon_texts > p:nth-child(2){
+        color: #fff;
+        font-size: 36px;
+        margin-top: 10px;
+    }
+}
+
+.hex_blocks {
+    @include dflex();
+}
+.hex_block:not(:first-child) {
+    margin-left: 50px;
+}   
+
+.hex_center {
+    margin-left: 50px;
+}
+
+.hex_inner_top {
+    @include dflex(column);
+    position: relative;
+    justify-content: flex-start;
+}
+
+.hex_inner_top > p:nth-child(3){
+    position: absolute;
+    top: 50%;
+    color: #fff;
+    font-size: 27px;
+}
+
+.hex_inner_top > p:nth-child(4){
+    margin-top: 15px;
+    position: absolute;
+    top: 55%;
+    text-align: center;
+}
+
+.hex_center {
+    @include dflex(column);
+    position: relative;
+    & > p {
+        position: absolute;
+        color: #fff;
+        font-size: 40px;
+        text-align: center;
+    }
+}
+
+.apple_page {
+    @include dflex(column);
+}
+
+.apple_name {
+    margin-top: 40px;
+}
