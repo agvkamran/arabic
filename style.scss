@@ -28,6 +28,10 @@ ul li {
     flex-wrap: $fwrap;
 }
 
+.language_icon, .burger {
+    display: none;
+}
+
 nav {
     @include dflex(row,space-between, nowrap);
     justify-content: space-between;
@@ -59,7 +63,17 @@ nav {
     cursor: pointer;
 }
 
+@media screen and (max-width: 760px){
+    .nav_list {
+        display: none;
+    }
+    .language_icon, .burger {
+        display: block;
+    }
+}
+
 .bg_image {
+    width: 100%;
     background: url(./images/main_header_arabic.jpg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -123,6 +137,7 @@ nav {
 
 .options {
     @include dflex(row, flex-end, nowrap);
+    width: 100%;
     & .options_menu {
         @include dflex(row, flex-end, nowrap);
         & li {
