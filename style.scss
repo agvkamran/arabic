@@ -20,6 +20,18 @@ ul li {
     cursor: pointer;
 }
 
+$fcWhite: #fff;
+$fcBlack: #000;
+$fcBlue: #167bc0;
+$fcDarkBlue: #253f76;
+$fSizeTZ: 30px;
+$fSizeFF: 44px;
+$fSizeFZ: 50px;
+
+%transitionAll {
+    transition: 0.3s all ease;
+}
+
 @mixin dflex ($fdirection: row, $fcontent: center, $fwrap: nowrap){
     display: flex;
     align-items: center;
@@ -35,13 +47,13 @@ ul li {
 nav {
     @include dflex(row,space-between, nowrap);
     justify-content: space-between;
-    padding: 20px 100px;
+    padding: 20px 140px;
 }
 
 .nav_list {
     @include dflex(row, space-between, nowrap);
     & li { 
-        color: #fff;
+        color: $fcWhite;
     }
     & li:not(:first-child){
         margin-left: 40px;
@@ -50,7 +62,7 @@ nav {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        border: 1px solid #fff;
+        border: 1px solid $fcWhite;
         padding: 10px;
         border-radius: 5px;
     }
@@ -63,13 +75,8 @@ nav {
     cursor: pointer;
 }
 
-@media screen and (max-width: 760px){
-    .nav_list {
-        display: none;
-    }
-    .language_icon, .burger {
-        display: block;
-    }
+.start_trading {
+    display: none;
 }
 
 .bg_image {
@@ -91,15 +98,14 @@ nav {
     margin-left: 150px;
 }
 
-.img_relative {
-    // margin-left: 130px;
-    // margin-top: 90px;
-}
-
 .rel_image_wrapper {
     position: relative;
     @include dflex(column);
-    // align-items: center;
+    @extend %transitionAll;
+}
+
+.rel_image_wrapper:hover {
+    transform: scale(1.1);
 }
 
 .abs_image_wrapper {
@@ -107,23 +113,29 @@ nav {
     top: -80px;
     left: -130px;
     z-index: 100;
+    @extend %transitionAll;
+}
+
+.abs_image_wrapper:hover {
+    transform: scale(1.1);
 }
 
 .text_abs {
     position: absolute;
     font-size: 50px;
-    color: #fff;
+    color: $fcWhite;
     text-align: center;
 }
 
 .img_rectangle {
+    cursor: pointer;
+    @extend %transitionAll;
     background: rgba(0,0,0,0.8);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     padding: 10px;
-    width: 23%;
     & p:first-child {
         font-size: 70px;
         color: #e88b0c;
@@ -131,6 +143,9 @@ nav {
     & p:last-child {
         font-size: 60px;
         color: #5da9dd;
+    }
+    &:hover {
+        background: rgba(0,0,0,1);
     }
 }
 
@@ -165,22 +180,26 @@ nav {
         background-repeat: no-repeat;
         padding: 120px 0;
         @include dflex(column);
-        height: 100%;
         
         
     & p:first-child {
         font-size: 38px;
         transform: skewY(-6deg) scaleX(.9);
         text-align: center;
-        color: #fff;
+        color: $fcWhite;
         margin: 0 20px;
     }
     & p:nth-child(2){
         margin-top: 20px;
-        font-size: 30px;
-        border: 1px solid #000;
+        font-size: $fSizeTZ;
+        border: 1px solid $fcBlack;
         padding: 10px 20px;
         transform: skewY(-6deg) scaleX(.9);
+        cursor: pointer;
+    }
+    & p:nth-child(2):hover{
+        border: 1px solid $fcWhite;
+        color: $fcWhite;
     }
 }
     .trades_images_wrapper:not(:first-child){
@@ -197,23 +216,27 @@ nav {
     text-align: center;
     padding: 70px 100px;
     & p:first-child {
-        font-size: 44px;
+        font-size: $fSizeFF;
     }
     & p:nth-child(2){
         font-size: 100px;
-        color: #fff;
+        color: $fcWhite;
     }
     & p:nth-child(3){
-        font-size: 44px;
-        color: #fff;
+        font-size: $fSizeFF;
+        color: $fcWhite;
     }
     & p:nth-child(4){
         cursor: pointer;
-        font-size: 30px;
-        color: #000;
-        border: 1px solid #000;
+        font-size: $fSizeTZ;
+        color: $fcBlack;
+        border: 1px solid $fcBlack;
         padding: 10px 20px;
         margin-top: 20px;
+    }
+    & p:nth-child(4):hover {
+        color: $fcWhite;
+        border: 1px solid $fcWhite;
     }
 }
 
@@ -226,16 +249,30 @@ nav {
         font-size: 38px;
         transform: skewY(6deg) scaleX(.9);
         text-align: center;
-        color: #fff;
+        color: $fcWhite;
         margin: 0 20px;
     }
     & p:nth-child(2){
         margin-top: 20px;
-        font-size: 30px;
-        border: 1px solid #000;
+        font-size: $fSizeTZ;
+        border: 1px solid $fcBlack;
         padding: 10px 20px;
         transform: skewY(6deg) scaleX(.9);
+        cursor: pointer;
 }
+    & p:nth-child(2):hover{
+        border: 1px solid $fcWhite;
+        color: $fcWhite;
+    }
+}
+
+.p_btn {
+    cursor: pointer;
+}
+
+.p_btn:hover {
+    color: $fcWhite;
+    border: 1px solid $fcWhite;
 }
 
 .bullet {
@@ -246,17 +283,17 @@ nav {
         margin-left: 75px;
     }
     & div > p:first-child {
-        color: #fff;
+        color: $fcWhite;
         font-size: 44px;
     }
     & div > p:last-child {
-        color: #fff;
+        color: $fcWhite;
         font-size: 24px;
     }
     & div:first-child p {
         color: #720ce8;
         text-align: center;
-        font-size: 30px;
+        font-size: $fSizeTZ;
     }
     &__btn {
         position: relative;
@@ -275,16 +312,16 @@ nav {
    &__first_side > p:first-child{
     margin-top: 40px;
     font-size: 70px;
-    color: #167bc0;
+    color: $fcBlue;
     margin-bottom: 40px;
     }
     &__first_side > p:nth-child(2){
-        color: #253f76;
-        font-size: 50px;
+        color: $fcDarkBlue;
+        font-size: $fSizeFZ;
    } 
    &__first_side > p:nth-child(3){
-       color: #253f76;
-       font-size: 50px;
+       color: $fcDarkBlue;
+       font-size: $fSizeFZ;
    }
 }
 
@@ -300,7 +337,7 @@ nav {
         padding: 40px 20px;
     }
     .circle_one {
-        border: 1px solid #167bc0;
+        border: 1px solid $fcBlue;
     }
     .circle_abs {
         position: absolute;
@@ -311,13 +348,16 @@ nav {
         border: 1px solid #720ce8;
         padding: 40px 20px;
     }
+    .time_line_wrapper {
+        width: 100%
+    }
 }
 
 .august__bottom_side {
     @include dflex();
     margin-bottom: 40px;
     & > p:first-child, p:nth-child(3){
-        color: #167bc0;
+        color: $fcBlue;
         font-size: 60px;
     }
     & > div > img {
@@ -329,7 +369,7 @@ nav {
     }
     & > div > p {
         position: absolute;
-        color: #fff;
+        color: $fcWhite;
         font-size: 40px;
     }
 }
@@ -351,7 +391,7 @@ nav {
         color: #e88b0c;
     }
     &__hexagon_texts > p:nth-child(2){
-        color: #fff;
+        color: $fcWhite;
         font-size: 36px;
         margin-top: 10px;
     }
@@ -359,6 +399,20 @@ nav {
 
 .hex_blocks {
     @include dflex();
+}
+
+.hex_top {
+    width: 100%;
+}
+.hex_bottom {
+    width: 100%;
+}
+.hex_block {
+    @extend %transitionAll;
+}
+
+.hex_block:hover {
+    transform: scale(1.05);
 }
 .hex_block:not(:first-child) {
     margin-left: 50px;
@@ -377,10 +431,12 @@ nav {
 .hex_inner_top > p:nth-child(3){
     position: absolute;
     top: 50%;
-    color: #fff;
+    color: $fcWhite;
     font-size: 27px;
 }
-
+.hex_center_cont {
+    width: 100%;
+}
 .hex_inner_top > p:nth-child(4){
     margin-top: 15px;
     position: absolute;
@@ -393,7 +449,7 @@ nav {
     position: relative;
     & > p {
         position: absolute;
-        color: #fff;
+        color: $fcWhite;
         font-size: 40px;
         text-align: center;
     }
@@ -403,7 +459,7 @@ nav {
     @include dflex(column);
     padding: 40px 0px;
     &__name > p {
-        color: #167bc0;
+        color: $fcBlue;
         font-size: 70px;
     }
 }
@@ -417,7 +473,7 @@ nav {
     p {
         font-size: 40px;
         text-align: end;
-        color: #253f76;
+        color: $fcDarkBlue;
     }
 }
 
@@ -426,6 +482,7 @@ nav {
     @include dflex();
     width: 100%;
     .orange_button {
+        cursor: pointer;
         @include dflex();
         min-width: 33%;
         background-color: orange;
@@ -433,7 +490,13 @@ nav {
         padding: 23px 30px;
         text-align: left;
     }
+
+    .orange_button:hover {
+        background-color: rgb(172, 125, 40);
+    }
+
     .blue_button {
+        cursor: pointer;
         @include dflex();
         justify-content: center;
         width: 33%;
@@ -445,16 +508,22 @@ nav {
             margin-left: 15px;
             }
         & span {
-            color: #fff;
+            color: $fcWhite;
             }
         & p {
             text-align: center;
             border-radius: 15px;
             margin-top: 5px;
             font-size: 16px;
-            color: #fff;
+            color: $fcWhite;
         }
     }
+    
+    .blue_button:hover {
+       color: #fff;
+       background: linear-gradient(to bottom, #121f3a, #198bd9);
+    }
+
     .apple_image {
         height: 37px;
     }
@@ -466,20 +535,28 @@ nav {
     width: 100%;
     &__wrapper {
         @include dflex();
-        justify-content: space-around;
-        // background-color:red;
+        justify-content: space-between;
     }
     .process_block {
+        cursor: pointer;
         @include dflex();
         margin-top: 20px;
         margin-left: 110px;
         & p {
             font-size: 16px;
+            width: 100%;
         }
         & img {
             margin-left: 20px;
         }
     }
+    .process_block:hover .icon_pb {
+        transform: scale(1.1);
+    }
+}
+
+.control_image {
+    width: 100%;
 }
 
 footer {
@@ -500,7 +577,7 @@ footer {
         margin-left: 10px;
     }
     li:hover {
-        color: #167bc0; 
+        color: $fcBlue; 
     }
     span {
         color: #777777;
@@ -530,6 +607,7 @@ footer {
 .footer_bottom_content {
     margin-top: 50px;
     @include dflex();
+    justify-content: space-between;
     .footer_images {
         width: 50%;
         text-align: right;
@@ -542,5 +620,209 @@ footer {
         p:last-child {
             margin-left: 10px;
         }
+    }
+}
+
+.footer_inc {
+    font-style: italic;
+    color: #777777;
+    @include dflex(column);
+    font-size: 14px;
+}
+
+@media screen and (max-width: 1600px){
+    .hex_top {
+        width: 99%;
+    }
+    .hex_bottom {
+        width: 99%;
+    }
+    .hex_inner_top > p:nth-child(3){
+        font-size: 17px;
+    }
+    .hex_inner_top > p:nth-child(4){
+        font-size: 12px;
+    }
+    .hex_center_cont {
+        width: 99%;
+    }
+    .time_line {
+        width: 95%;
+    }
+    .august__second_side {
+        width: 90%;
+    }
+    .process_block_wrapper {
+        display: flex;
+        justify-content: space-around;
+    }
+    .apple_page__left_side {
+        margin: 50px;
+    }
+    .process_block {
+        margin-left: 20px;
+    }
+}
+
+@media screen and (max-width: 1500px) {
+    nav {
+        padding: 20px;
+    }
+    .bg_image {
+        padding: 150px;
+    }
+    .svg_images {
+        margin-left: 0;
+    }
+    .blue_button__texts p:nth-child(2){
+        font-size: 9px;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .trades .trades_images_wrapper:first-child {
+        padding: 80px 0;
+    }
+    .trades_images_wrapper:nth-child(3) {
+        padding: 80px 0 ;
+    }
+    .trades_images_wrapper:nth-child(3) {
+        padding: 80px 0 ;
+    }
+    .trades .trades_images_wrapper:nth-child(2) p:nth-child(1){
+        font-size: 30px;
+    }
+    .trades .trades_images_wrapper:nth-child(2) p:nth-child(2){
+        font-size: 70px;
+    }
+    .trades .trades_images_wrapper:nth-child(2) p:nth-child(3){
+        font-size: 30px;
+    }
+    .trades .trades_images_wrapper:nth-child(2) p:nth-child(4){
+        font-size: 20px;
+    }
+    .trades .trades_images_wrapper:first-child p:nth-child(1){
+        font-size: 30px;
+    }
+    .trades .trades_images_wrapper:first-child p:nth-child(2){
+        font-size: 20px;
+    }
+    .trades .trades_images_wrapper:first-child p:nth-child(3){
+        font-size: 20px;
+    }
+    .trades .trades_images_wrapper:nth-child(3) p:nth-child(1){
+        font-size: 30px;
+    }
+    .trades .trades_images_wrapper:nth-child(3) p:nth-child(2){
+        font-size: 20px;
+    }
+    
+    .trades_images_wrapper:nth-child(1){
+        padding: 10px;
+    }
+    .trades_images_wrapper:nth-child(2){
+        padding: 30px 50px;
+    }
+}
+
+@media screen and (max-width: 1100px){
+    .bullet {
+        & div:not(:first-child) {
+            margin-left: 25px;
+        }
+        div > p:first-child {
+            font-size: $fSizeTZ;
+        }
+        div > p:nth-child(2){
+            font-size: 16px;
+        }
+    }
+    .hex_inner_top > p:nth-child(3){
+        font-size: 11px;
+    }
+    .hex_inner_top > p:nth-child(4){
+        font-size: 7px;
+    }
+    .control_image {
+        display: none;
+    }
+}
+@media screen and (max-width: 960px){
+    .img_abs {
+        display: none;
+    }
+    .bg_image {
+        padding: 150px 0;
+    }
+}
+
+@media screen and (max-width: 760px){
+    .nav_list {
+        display: none;
+    }
+    .language_icon, .burger {
+        display: block;
+        color: $fcWhite;
+        cursor: pointer;
+    }
+   
+    .rel_image_wrapper {
+        display: none;
+    }
+    .img_rectangle {
+        width: 100%;
+    }
+    .nav_and_logo {
+        flex-direction: column;
+    }
+    .footer_center_content {
+        flex-direction: column;
+    }
+    .footer_logo {
+        margin: 20px auto;
+    }
+    .footer_bottom_content {
+        flex-direction: column;
+    }
+    .trades {
+        display: none;
+    }
+    .bullet {
+        display: none;
+    }
+    .august {
+        display: none;
+    }
+    .hexagon_page {
+        display: none;
+    }
+    .apple_page {
+        display: none;
+    }
+    .options {
+        display: none;
+    }
+    .start_trading {
+        display: block;
+        padding: 20px;
+        @include dflex();
+        font-size: $fSizeTZ;
+        color: $fcBlue;
+    }
+    footer {
+        padding: 10px;
+    }
+    .footer_inc {
+        margin-top: 20px;
+    }
+    .center_left {
+        width: 100%;
+    }
+    .center_right {
+        width: 100%;
+    }
+    .visa {
+        display: none;
+        opacity: 0;
     }
 }
